@@ -3,6 +3,7 @@
 # Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
 
 import enum
+import os
 import sys
 from pathlib import Path
 
@@ -31,7 +32,11 @@ Store = Context.Store
 Del = Context.Del
 
 
-ASTROID_INSTALL_DIRECTORY = Path(__file__).parent
+try:
+    ASTROID_INSTALL_DIRECTORY = Path(__file__).parent
+except Exception as e:
+    # May not have __file__
+    ASTROID_INSTALL_DIRECTORY = os.getcwd()
 BRAIN_MODULES_DIRECTORY = ASTROID_INSTALL_DIRECTORY / "brain"
 
 
