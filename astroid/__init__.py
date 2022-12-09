@@ -192,6 +192,6 @@ if (
     tokenize._compile = functools.lru_cache()(tokenize._compile)  # type: ignore[attr-defined]
 
 # load brain plugins
-for module in BRAIN_MODULES_DIRECTORY.iterdir():
-    if module.suffix == ".py":
-        import_module(f"astroid.brain.{module.stem}")
+#for module in BRAIN_MODULES_DIRECTORY.iterdir():
+#    if module.suffix == ".py":
+#        import_module(f"astroid.brain.{module.stem}")
