@@ -17,6 +17,8 @@ from collections.abc import Callable, Iterator, Sequence
 from importlib.util import find_spec, module_from_spec
 from typing import Any, ClassVar
 
+from pathlib import Path
+
 from astroid import nodes
 from astroid._cache import CACHE_MANAGER
 from astroid.const import BRAIN_MODULES_DIRECTORY
@@ -432,7 +434,9 @@ class AstroidManager:
         self.bootstrap()
 
         # Reload brain plugins. During initialisation this is done in astroid.__init__.py
-        for module in BRAIN_MODULES_DIRECTORY.iterdir():
+        parts = ["brain_attrs.py"]
+        parts = [Path(x) for x in parts]
+        for module in parts:
             if module.suffix == ".py":
                 module_spec = find_spec(f"astroid.brain.{module.stem}")
                 assert module_spec
