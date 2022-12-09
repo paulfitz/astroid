@@ -36,7 +36,7 @@ try:
     ASTROID_INSTALL_DIRECTORY = Path(__file__).parent
 except Exception as e:
     # May not have __file__
-    ASTROID_INSTALL_DIRECTORY = os.getcwd()
+    ASTROID_INSTALL_DIRECTORY = Path(os.getcwd())
 BRAIN_MODULES_DIRECTORY = ASTROID_INSTALL_DIRECTORY / "brain"
 
 
